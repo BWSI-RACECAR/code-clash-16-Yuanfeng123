@@ -125,14 +125,23 @@ class Solution:
             nodeArray.append(item)
         nodeArray.append("Finish")
 
-        matrix = [None] * nodeNum
+        matrix = [9999999] * nodeNum
         for i in range(nodeNum):
             matrix[i] = [None] * nodeNum
 
         for key in graph:
             for key2 in graph[key]:
                 matrix[nodeArray.index(key)][nodeArray.index(key2)] = graph[key][key2]
-        print(matrix)
+
+        dist = matrix
+        for i in range(nodeNum):
+            for j in range(nodeNum):
+                for k in range(nodeNum):
+                    dist[i][j] = min(dist[i][j],dist[i][k] + dist[k][j])
+
+        print(dist)
+        
+
 
             
         
