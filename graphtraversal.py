@@ -48,18 +48,18 @@ Constraints:
 import json
 
 
-graph = [[(lambda x: 0 if x[0] == x[1] else 99999)([i, j]) for j in range(n)] for i in range(n)]
-parents = [[i] * n for i in range(4)] 
-def floyd():
-    global graph
-    global parents
-    n = len(graph)
-    for k in range(n):
-        for i in range(n):
-            for j in range(n):
-                if graph[i][k] + graph[k][j] < graph[i][j]:
-                    graph[i][j] = graph[i][k] + graph[k][j]
-                    parents[i][j] = parents[k][j] 
+# graph = [[(lambda x: 0 if x[0] == x[1] else 99999)([i, j]) for j in range(n)] for i in range(n)]
+# parents = [[i] * n for i in range(4)] 
+# def floyd():
+#     global graph
+#     global parents
+#     n = len(graph)
+#     for k in range(n):
+#         for i in range(n):
+#             for j in range(n):
+#                 if graph[i][k] + graph[k][j] < graph[i][j]:
+#                     graph[i][j] = graph[i][k] + graph[k][j]
+#                     parents[i][j] = parents[k][j] 
     
 
 def constructGraph(graph):
