@@ -125,9 +125,9 @@ class Solution:
             nodeArray.append(item)
         nodeArray.append("Finish")
 
-        matrix = [9999999] * nodeNum
+        matrix = [None] * nodeNum
         for i in range(nodeNum):
-            matrix[i] = [None] * nodeNum
+            matrix[i] = [9999999] * nodeNum
 
         for key in graph:
             for key2 in graph[key]:
