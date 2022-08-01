@@ -80,7 +80,7 @@ class Solution:
         # return type: int (shortest path as an int)
 
         # TODO: Write code below to return an int with the solution to the prompt
-        graph["Finished"] = {}
+        graph["Finish"] = {}
         unvisited_nodes = []
         nodes = []
 
