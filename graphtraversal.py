@@ -80,27 +80,46 @@ class Solution:
         # return type: int (shortest path as an int)
 
         # TODO: Write code below to return an int with the solution to the prompt
-        # arr = shortest_path(graph, "Start", "Finish")
-        # graph["Finish"]
-        # for u in graph:
-        #     for v in graph[u]:
-        #         if not u in graph[v]:
-        #             graph[v][u] = graph[u][v]
+        graph["Finished"] = {}
+        unvisited_nodes = []
+        nodes = []
 
-        # for r in range(nV):
-        #     for p in range(nV):
-        #         for q in range(nV):
-        #             dist[p][q] = min(dist[p][q], dist[p][r] + dist[r][q])
-        #     nodeNum = len(graph.keys())
-        nodeNum = len(graph.keys())
-        nodeArray = []
-        for item in graph.keys():
-            nodeArray.append(item)
-        print(nodeArray)
+        for node, __ in graph.items():
+            unvisited_nodes.append(node)
+            nodes.append(node)
+
+        shortest_path = {}
+        previous_nodes = {}
+
+        max_value = 10000
+        for node in unvisited_nodes:
+            shortest_path[node] = max_value
+        shortest_path["Start"] = 0
+
+        while unvisited_nodes:
+            current_min_node = None
+            for node in  unvisited_nodes:
+                if current_min_node == None:
+                    current_min_node = node
+                elif shortest_path[node] < shortest_path[current_min_node]:
+                    current_min_node = node
+
+            neighbors = []
+            for next_node in graph[current_min_node]:
+                neighbors.append(next_node)
+            
+            for neighbor in neighbors:
+                tentative_value = shortest_path[current_min_node] + graph[current_min_node][neighbor]
+                if tentative_value < shortest_path[neighbor]:
+                    shortest_path[neighbor] = tentative_value
+                    previous_nodes[neighbor] = current_min_node
+            
+            unvisited_nodes.remove(current_min_node)
         
-        matrix = [None] * nodeNum
-        for i in range(nodeNum):
-            matrix[i] = [999999] * nodeNum
+        # return previous_nodes, shortest_path
+        print(shortest_path)
+        print(previous_nodes)
+
         
 
 
