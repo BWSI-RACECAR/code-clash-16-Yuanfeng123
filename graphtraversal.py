@@ -69,9 +69,10 @@ def constructGraph(graph):
         nodeArray.append(item)
     s = json.dumps(graph)
     print(s)
+    print(nodeArray)
     for i in range(len(nodeArray)):
         s.replace(nodeArray[i], "\""+str(i)+"\"")
-
+    
     res = json.loads(s)
     return res
 
