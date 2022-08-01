@@ -76,49 +76,67 @@ Constraints:
 class Solution:
     
     def spath_algo(self, graph):
-        # type graph: dict
-        # return type: int (shortest path as an int)
+        # # type graph: dict
+        # # return type: int (shortest path as an int)
 
-        # TODO: Write code below to return an int with the solution to the prompt
-        graph["Finish"] = {}
-        unvisited_nodes = []
-        nodes = []
+        # # TODO: Write code below to return an int with the solution to the prompt
+        # graph["Finish"] = {}
+        # unvisited_nodes = []
+        # nodes = []
 
-        for node, __ in graph.items():
-            unvisited_nodes.append(node)
-            nodes.append(node)
+        # for node, __ in graph.items():
+        #     unvisited_nodes.append(node)
+        #     nodes.append(node)
 
-        shortest_path = {}
-        previous_nodes = {}
+        # shortest_path = {}
+        # previous_nodes = {}
 
-        max_value = 10000
-        for node in unvisited_nodes:
-            shortest_path[node] = max_value
-        shortest_path["Start"] = 0
+        # max_value = 10000
+        # for node in unvisited_nodes:
+        #     shortest_path[node] = max_value
+        # shortest_path["Start"] = 0
 
-        while unvisited_nodes:
-            current_min_node = None
-            for node in  unvisited_nodes:
-                if current_min_node == None:
-                    current_min_node = node
-                elif shortest_path[node] < shortest_path[current_min_node]:
-                    current_min_node = node
+        # while unvisited_nodes:
+        #     current_min_node = None
+        #     for node in  unvisited_nodes:
+        #         if current_min_node == None:
+        #             current_min_node = node
+        #         elif shortest_path[node] < shortest_path[current_min_node]:
+        #             current_min_node = node
 
-            neighbors = []
-            for next_node in graph[current_min_node]:
-                neighbors.append(next_node)
+        #     neighbors = []
+        #     for next_node in graph[current_min_node]:
+        #         neighbors.append(next_node)
             
-            for neighbor in neighbors:
-                tentative_value = shortest_path[current_min_node] + graph[current_min_node][neighbor]
-                if tentative_value < shortest_path[neighbor]:
-                    shortest_path[neighbor] = tentative_value
-                    previous_nodes[neighbor] = current_min_node
+        #     for neighbor in neighbors:
+        #         tentative_value = shortest_path[current_min_node] + graph[current_min_node][neighbor]
+        #         if tentative_value < shortest_path[neighbor]:
+        #             shortest_path[neighbor] = tentative_value
+        #             previous_nodes[neighbor] = current_min_node
             
-            unvisited_nodes.remove(current_min_node)
+        #     unvisited_nodes.remove(current_min_node)
         
-        return previous_nodes, shortest_path
-        # print(shortest_path)
-        # print(previous_nodes)
+        # return previous_nodes, shortest_path
+        # # print(shortest_path)
+        # # print(previous_nodes)
+        nodeNum = len(graph.keys()) + 1
+        nodeArray = []
+        for item in graph.keys():
+            nodeArray.append(item)
+        # nodeArray.append("Finish")
+
+        matrix = [None] * nodeNum
+        for i in range(nodeNum):
+            matrix[i] = [None] * nodeNum
+
+        for key in graph:
+            for key2 in graph[key]:
+                matrix[nodeArray.index(key)][nodeArray.index(key2)] = graph[key][key2]
+        print(matrix)
+
+            
+        
+
 
         
 
