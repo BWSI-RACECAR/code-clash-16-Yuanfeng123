@@ -45,35 +45,38 @@ Constraints:
 
 """
 
-def shortest_path(graph, node1, node2):
-    path_list = [[node1]]
-    path_index = 0
-    # To keep track of previously visited nodes
-    previous_nodes = {node1}
-    if node1 == node2:
-        return path_list[0]
-        
-    while path_index < len(path_list):
-        current_path = path_list[path_index]
-        last_node = current_path[-1]
-        next_nodes = graph[last_node]
-        # Search goal node
-        if node2 in next_nodes:
-            current_path.append(node2)
-            return current_path
-        # Add new paths
-        for next_node in next_nodes:
-            if not next_node in previous_nodes:
-                new_path = current_path[:]
-                new_path.append(next_node)
-                path_list.append(new_path)
-                # To avoid backtracking
-                previous_nodes.add(next_node)
-        # Continue to next path in list
-        path_index += 1
-    # No path is found
-    return []
+import json
+
+
+graph = [[(lambda x: 0 if x[0] == x[1] else 99999)([i, j]) for j in range(n)] for i in range(n)]
+parents = [[i] * n for i in range(4)] 
+def floyd():
+    global graph
+    global parents
+    n = len(graph)
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                if graph[i][k] + graph[k][j] < graph[i][j]:
+                    graph[i][j] = graph[i][k] + graph[k][j]
+                    parents[i][j] = parents[k][j] 
     
+
+def constructGraph(graph):
+    nodeNum = len(graph.keys())
+    nodeArray = []
+    for item in graph.keys():
+        nodeArray.append(item)
+    s = json.dumps(graph)
+    print(s)
+    for i in range(len(nodeArray)):
+        s.replace(nodeArray[i], "\""+str(i)+"\"")
+
+    res = json.loads(s)
+    return res
+
+        
+
 
 class Solution:
     
@@ -82,13 +85,9 @@ class Solution:
         # return type: int (shortest path as an int)
 
         # TODO: Write code below to return an int with the solution to the prompt
-        arr = shortest_path(graph, "Start", "Finish")
-        res = ""
-        for i in range(len(arr)):
-            res += arr[i]
-            if i!=len(arr)-1:
-                res +=  " -> "
-        return res
+        # arr = shortest_path(graph, "Start", "Finish")
+        print(constructGraph(graph))
+        
 
         
 
