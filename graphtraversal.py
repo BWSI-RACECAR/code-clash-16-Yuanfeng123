@@ -81,11 +81,30 @@ class Solution:
 
         # TODO: Write code below to return an int with the solution to the prompt
         # arr = shortest_path(graph, "Start", "Finish")
+        # graph["Finish"]
         for u in graph:
             for v in graph[u]:
                 if not u in graph[v]:
                     graph[v][u] = graph[u][v]
-                    print(graph[v][u])
+
+        # for r in range(nV):
+        #     for p in range(nV):
+        #         for q in range(nV):
+        #             dist[p][q] = min(dist[p][q], dist[p][r] + dist[r][q])
+        #     nodeNum = len(graph.keys())
+        nodeNum = len(graph.keys())
+        nodeArray = []
+        for item in graph.keys():
+            nodeArray.append(item)
+        print(nodeArray)
+        
+        matrix = [None] * nodeNum
+        for i in range(nodeNum):
+            matrix[i] = [999999] * nodeNum
+        
+
+
+        
         
 
         
