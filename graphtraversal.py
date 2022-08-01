@@ -62,12 +62,12 @@ Constraints:
 #                     parents[i][j] = parents[k][j] 
     
 
-def constructGraph(graph):
-    nodeNum = len(graph.keys())
-    nodeArray = []
-    for item in graph.keys():
-        nodeArray.append(item)
-    return nodeArray
+# def constructGraph(graph):
+#     nodeNum = len(graph.keys())
+#     nodeArray = []
+#     for item in graph.keys():
+#         nodeArray.append(item)
+#     nodeArray.append("Finish")
    
 
         
@@ -81,7 +81,11 @@ class Solution:
 
         # TODO: Write code below to return an int with the solution to the prompt
         # arr = shortest_path(graph, "Start", "Finish")
-        print(constructGraph(graph))
+        for u in graph:
+            for v in graph[u]:
+                if not u in graph[v]:
+                    graph[v][u] = graph[u][v]
+                    print(graph[v][u])
         
 
         
