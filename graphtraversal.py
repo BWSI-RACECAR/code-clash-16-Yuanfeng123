@@ -82,7 +82,14 @@ class Solution:
         # return type: int (shortest path as an int)
 
         # TODO: Write code below to return an int with the solution to the prompt
-        return shortest_path(graph, "Start", "Finish")
+        arr = shortest_path(graph, "Start", "Finish")
+        res = ""
+        for i in range(len(arr)):
+            res += arr[i]
+            if i!=len(arr)-1:
+                res +=  " -> "
+        return res
+
         
 
 def main():
