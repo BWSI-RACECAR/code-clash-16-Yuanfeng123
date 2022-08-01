@@ -21,7 +21,8 @@ travel through that path.
 Test Cases:
 
 Input:
-{ 'Start': {'Invisible Maze': 15, 'The Labyrinth': 20}, 
+{ 
+    'Start': {'Invisible Maze': 15, 'The Labyrinth': 20}, 
 'Invisible Maze': {'Park Walk': 45}, 
 'Ice Valley': {'Tower of Doom': 45, 'Sloped Madness': 85}, 
 'The Labyrinth': {'Ice Valley': 45, 'Sloped Madness': 155}, 
@@ -29,7 +30,8 @@ Input:
 'Park Walk': {'Tower of Doom': 45}, 
 'Cone Slalom': {'Sloped Madness': 15, 'Street Dodge': 30}, 
 'Street Dodge': {'Finish': 70}, 
-'Sloped Madness': {'Finish': 60}, 'Finish': {}}
+'Sloped Madness': {'Finish': 60}, 
+'Finish': {}}
 
 Start -> Invisible Maze -> Park Walk -> Tower of Doom -> Cone Slalom -> Sloped Madness -> Finish 
 
@@ -44,8 +46,6 @@ Constraints:
 - The start node will always be named "Start" and the final node will always be named "Finish"
 
 """
-
-import json
 
 
 # graph = [[(lambda x: 0 if x[0] == x[1] else 99999)([i, j]) for j in range(n)] for i in range(n)]
@@ -67,14 +67,8 @@ def constructGraph(graph):
     nodeArray = []
     for item in graph.keys():
         nodeArray.append(item)
-    s = json.dumps(graph)
-    print(s)
-    print(nodeArray)
-    for i in range(len(nodeArray)):
-        s.replace(nodeArray[i], "\""+str(i)+"\"")
-    
-    res = json.loads(s)
-    return res
+    return nodeArray
+   
 
         
 
