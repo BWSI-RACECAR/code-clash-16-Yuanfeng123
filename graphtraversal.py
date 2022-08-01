@@ -123,7 +123,7 @@ class Solution:
         nodeArray = []
         for item in graph.keys():
             nodeArray.append(item)
-        # nodeArray.append("Finish")
+        nodeArray.append("Finish")
 
         matrix = [None] * nodeNum
         for i in range(nodeNum):
