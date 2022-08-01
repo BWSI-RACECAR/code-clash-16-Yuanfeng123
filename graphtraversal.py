@@ -119,7 +119,6 @@ class Solution:
         # return previous_nodes, shortest_path
         # # print(shortest_path)
         # # print(previous_nodes)
-        print(graph)
         nodeNum = len(graph.keys()) + 1
         nodeArray = []
         for item in graph.keys():
