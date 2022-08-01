@@ -116,9 +116,9 @@ class Solution:
             
             unvisited_nodes.remove(current_min_node)
         
-        # return previous_nodes, shortest_path
-        print(shortest_path)
-        print(previous_nodes)
+        return previous_nodes, shortest_path
+        # print(shortest_path)
+        # print(previous_nodes)
 
         
 
