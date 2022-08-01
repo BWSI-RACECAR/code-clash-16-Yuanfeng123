@@ -88,7 +88,7 @@ class Solution:
             
             unvisited_nodes.remove(current_min_node)
         
-        return shortest_path["Start"]
+        return previous_nodes, shortest_path
 
 def main():
     tc1 = Solution()
